@@ -1,0 +1,354 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('images/camo-pattern.jpg');
+    background-size: cover;
+    margin: 0;
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    grid-template-rows: 100px 1fr 100px;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-header {
+    padding-left: 30px;
+    align-items: center;
+}
+
+.tetris-title {
+    display: block;
+    color: black;
+    max-width: 300px;
+    font-family: '천리마';
+    padding: 5px 10px;
+    font-size: 50px;
+    color: #D4AF37;
+}
+
+main {
+    max-width: 100%;
+    display: grid;
+    grid-template-areas:
+        'police-section information-section terrorist-section';
+    grid-template-columns: 1fr 400px 1fr;
+}
+/* 경찰쪽 스타일적용 */
+.police-section {
+    display: flex;
+    grid-area: police-section;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.title-police-section {
+    border: 2px solid #3498db;
+    height: 50px;
+    align-items: center;
+    justify-items: center;
+    background-color: black;
+    margin-bottom: 5px;
+}
+
+.title-p-section {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3498db;
+    font-family: '천리마';
+}
+
+.info-next-block-p {
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    width: 100px;
+    height: 80px;
+    margin-right: 10px;
+    background-color: #2D2D2D;
+    margin-top: 20px;
+}
+
+.police-container-section {
+    margin-right: 10px;
+    outline: 3px solid #3498db;
+    height: 500px;
+    width: 250px;
+    background-color: #2D2D2D;
+    margin-top: 3px;
+}
+
+.police-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+/* 테로쪽 스타일적용 */
+.terrorist-section {
+    display: flex;
+    grid-area: terrorist-section;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.title-terrorist-section {
+    border: 2px solid #e74c3c;
+    justify-items: center;
+    height: 50px;
+    background-color: black;
+    margin-bottom: 5px;
+}
+
+.title-t-section {
+    font-size: 20px;
+    color: #e74c3c;
+    font-weight: bold;
+    font-family: '천리마';
+}
+
+.info-next-block-t {
+    border: 2px solid #e74c3c;
+    border-radius: 5px;
+    width: 100px;
+    height: 80px;
+    margin-left: 10px;
+    margin-top: 20px;
+    background-color: #2D2D2D;
+}
+
+.terrorist-container-section {
+    margin-left: 10px;
+    outline: 3px solid #e74c3c;
+    width: 250px;
+    height: 500px;
+    background-color: #2D2D2D;
+    margin-top: 3px;
+}
+
+.terrorist-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+
+/* 가운데부분 스타일적용 */
+.information-section {
+    grid-area: information-section;
+    display: grid;
+    grid-template-areas: 
+        'state-p mark state-t'
+        'state-p score state-t'
+        'state-p control state-t';
+    grid-template-rows: 200px 100px 1fr;
+    grid-template-columns: 35px 1fr 35px;
+}
+
+.image-mark {
+    display: flex;
+    grid-area: mark;
+    align-items: center;
+    justify-content: center;
+}
+
+.mark-image {
+    width: 200px;
+    height: 200px;
+}
+
+.info-score-section {
+    grid-area: score;
+    border: 1px solid red;
+}
+
+.control-btns {
+    grid-area: control; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 시작 정지단추 스타일적용 그라디엔트를 리용하여 금속재질감이 나게 해줌 */
+.start-button, .stop-button {
+    background: linear-gradient(145deg,
+        #4a4a4a 0%,
+        #2d2d2d 50%,
+        #1a1a1a 100%);
+    width: 140px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button::before, .stop-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.15), 
+        transparent);
+    border-radius: 8px 8px 0 0;
+}
+
+.start-button {
+    border: 3px solid #3498db;
+    box-shadow: 
+        0 5px 15px rgba(52, 152, 219, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.start-button-text {
+    color: #3498db;
+    font-size: 20px;
+    text-shadow: 0 0 8px rgba(52, 152, 219, 0.7);
+}
+
+.stop-button {
+    border: 3px solid #e74c3c;
+    box-shadow: 
+        0 5px 15px rgba(231, 76, 60, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.stop-button-text {
+    color: #e74c3c;
+    font-size: 20px;
+    text-shadow: 0 0 8px rgba(231, 76, 60, 0.7);
+}
+
+/* 마우스유표가 단추우에 올라왔을때 스타일적용 */
+.start-button:hover {
+    border-color: #2980b9;
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
+}
+
+.stop-button:hover {
+    border-color: #c0392b;
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
+}
+
+/* 선수1, 선수2의 점수상태표시 */
+.info-state-section-police {
+    border: 1px solid #3498db;
+    grid-area: state-p;
+    background-color: #2C302E;
+    margin: 0px 5px;
+    border-radius: 10px;
+}
+
+.info-state-section-terrorist {
+    border: 1px solid #e74c3c;
+    grid-area: state-t;
+    background-color: #2C302E;
+    margin: 0px 5px;
+    border-radius: 10px;
+}
+
+/* 아래부분 스타일적용 */
+footer {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-creator {
+    margin-left: 200px;
+    margin-top: 10px;
+}
+
+.name {
+    color: #4a4a4a;
+    font-weight: bold;
+    font-size: 25px;
+    font-family: '천리마';
+    cursor: pointer;
+}
+
+.name:hover {
+    color: #5166dc;
+}
+
+.adress {
+    margin-top: 10px;
+    margin-right: 100px;
+}
+
+.adress-github {
+    text-decoration: none;
+    color: #9c9c9c;
+    font-size: 18px;
+}
+
+.adress-github:hover {
+    text-decoration: underline;
+    color: #da2727;
+}
+
+.game-info {
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.game-info-text {
+    font-size: 20px;
+    font-family: '청봉';
+    color: #ffc061;
+    font-weight: bold;
+}
+
+/* 보드스타일 적용 */
+#police-board, #terrorist-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 1px;
+}
+
+.cell {
+    background-color: #333;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#police-board .cell.filled {
+    background-color: black;
+}
+
+#terrorist-board .cell.filled {
+    background-color: black;
+}
+
+/* 콤퓨터용오락으로 설계되였으므로 반응형 무시 그저 이정도로만*/
+@media (max-width: 768px) {
+    main {
+        grid-template-areas:
+            'police-section'
+            'information-section'
+            'terrorist-section';
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+}
