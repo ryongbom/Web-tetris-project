@@ -333,12 +333,13 @@ footer {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-#police-board .cell.filled {
-    background-color: black;
+#police-board, #terrorist-board {
+    min-height: 500px; /* 보드 높이 고정 */
+    box-sizing: border-box;
 }
 
-#terrorist-board .cell.filled {
-    background-color: black;
+.cell {
+    transition: background-color 0.1s ease;
 }
 
 /* 콤퓨터용오락으로 설계되였으므로 반응형 무시 그저 이정도로만*/
