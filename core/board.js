@@ -38,14 +38,14 @@ class GameBoard {
     }
     drawPiece(piece) {
         const coords = piece.getCoordinates();
-        
+
         coords.forEach(coord => {
             // 좌표가 보드 안인지 확인
             if (coord.x >= 0 && coord.x < this.cols && coord.y >= 0 && coord.y < this.rows) {
                 // 해당 칸 찾기
                 const cellIndex = coord.y * this.cols + coord.x;
                 const cell = this.boardElement.children[cellIndex];
-                
+
                 if (cell) {
                     cell.style.backgroundColor = piece.color;
                 }
