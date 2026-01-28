@@ -325,22 +325,14 @@ footer {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(20, 1fr);
-    gap: 1px;
+    min-height: 500px; /* 보드 높이 고정 */
+    box-sizing: border-box;
 }
 
 .cell {
     /* background-color: #333; */
     border: 1px solid rgba(255,255,255,0.1);
     background-color: transparent;
-}
-
-#police-board, #terrorist-board {
-    min-height: 500px; /* 보드 높이 고정 */
-    box-sizing: border-box;
-}
-
-.cell {
-    transition: background-color 0.1s ease;
 }
 
 /* 콤퓨터용오락으로 설계되였으므로 반응형 무시 그저 이정도로만*/

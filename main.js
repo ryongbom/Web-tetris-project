@@ -4,6 +4,8 @@ import GameLogic from './core/game-logic.js';
 document.addEventListener('DOMContentLoaded', () => {
   console.log("게임 로딩 완료!");
 
+  let gamePlay = false;
+
   // 보드 만들기
   const policeBoard = new GameBoard('police-board', 'police');
   const terroristBoard = new GameBoard('terrorist-board', 'terrorist');
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     policeGame.startGame();
     terroristGame.startGame();
+    gamePlay = true;
   });
 
   stopButton.addEventListener('click', () => {
@@ -28,31 +31,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     policeGame.stopGame();
     terroristGame.stopGame();
+    gamePlay = false;
   });
+
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'A' || event.key === 'a') {
-      policeGame.movePiece(-1, 0);
-    }
-    else if (event.key === 'D' || event.key === 'd') {
-      policeGame.movePiece(1, 0);
-    }
-    else if (event.key === 'S' || event.key === 's') {
-      policeGame.movePiece(0, 1);
-    }
-    else if (event.key === 'W' || event.key === 'w') {
-      policeGame.rotatePiece();
-    }
-    if (event.key === 'ArrowRight') {
-      terroristGame.movePiece(1, 0);
-    }
-    else if (event.key === 'ArrowLeft') {
-      terroristGame.movePiece(-1, 0);
-    }
-    else if (event.key === 'ArrowDown') {
-      terroristGame.movePiece(0, 1);
-    }
-    else if (event.key === 'ArrowUp') {
-      terroristGame.rotatePiece();
+    if (gamePlay) {
+      if (event.key === 'A' || event.key === 'a') {
+        policeGame.movePiece(-1, 0);
+      }
+      else if (event.key === 'D' || event.key === 'd') {
+        policeGame.movePiece(1, 0);
+      }
+      else if (event.key === 'S' || event.key === 's') {
+        policeGame.movePiece(0, 1);
+      }
+      else if (event.key === 'W' || event.key === 'w') {
+        policeGame.rotatePiece();
+      }
+      else if (event.key === ' ') {
+        policeGame.hardDrop();
+      }
+
+      if (event.key === 'ArrowRight') {
+        terroristGame.movePiece(1, 0);
+      }
+      else if (event.key === 'ArrowLeft') {
+        terroristGame.movePiece(-1, 0);
+      }
+      else if (event.key === 'ArrowDown') {
+        terroristGame.movePiece(0, 1);
+      }
+      else if (event.key === 'ArrowUp') {
+        terroristGame.rotatePiece();
+      }
+      else if (event.key === 'Enter') {
+        terroristGame.hardDrop();
+        event.preventDefault();
+      }
     }
   });
 });
+
+

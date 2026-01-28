@@ -3,7 +3,7 @@ export default class Tetromino {
         this.type = type;
         this.playerType = playerType;
         this.shape = this.getShape();
-        this.position = { x: 3, y: 0 };
+        this.position = { x: 0, y: 0 };
         this.color = this.getColor();
     }
 
@@ -45,7 +45,7 @@ export default class Tetromino {
                 [0, 0, 0]
             ]
         }
-        return shapes[this.type] || shapes.I;   
+        return shapes[this.type] || shapes.I;
     }
 
     getColor() {
